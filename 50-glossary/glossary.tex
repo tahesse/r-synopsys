@@ -1,0 +1,49 @@
+\chapter{Notation}
+Scalars, vectors and matrices are mostly written in greek letters, bold font lowercase roman letters and bold font uppercase roman letters respectively. %
+%
+%
+% TODO is it better to use a longtable? Test this to see how it layouts!
+\bgroup\renewcommand*{\arraystretch}{1.5}
+\begin{itemize}
+	\item[]\itab{~Symbols}\htab{\textbf{~Description}}
+	\vspace*{2pt}\hrule
+%
+	% random variables
+	\N{X,~Y,~Z}{random variables}%
+	% expectation
+	\N{\E{X}}{expectation of the random variable \ensuremath{X}}%
+	% discrete outcome of random variables
+	\N{\mathcal{X},~\mathcal{Y},~\mathcal{Z}}{sets of discrete outcomes of a random variable}
+	% common output variable
+	\N{y}{commonly used as output variable}
+	% common input variable
+	\N{x}{commonly used as input variable}
+	% common model parameters
+	\N{\mathbf{w}}{commonly used as model parameters}
+	% common function or task
+	\N{f}{commonly used as a function or task}
+	% probability density
+	\N{p(x)}{probability density of the variable \ensuremath{x}}
+	% conditional independence
+	\N{\mathcal{X} \CI \mathcal{Y} \mid \mathcal{Z}}{conditional independence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}} given set \ensuremath{\mathcal{Z}}}
+	% unconditional independence
+	\N{\mathcal{X} \CI \mathcal{Y} \\ \mathcal{X} \CI \mathcal{Y}\mid\emptyset}{(unconditional) independence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}}}
+	% conditional dependence
+	\N{\mathcal{X} \CD \mathcal{Y} \mid \mathcal{Z}}{conditional dependence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}} given set \ensuremath{\mathcal{Z}}}
+	% unconditional dependence
+	\N{\mathcal{X} \CD \mathcal{Y} \\ \mathcal{X} \CD \mathcal{Y}\mid\emptyset}{(unconditional) dependence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}}}
+	% parent
+	\N{\PA(A)}{the parent vertex or vertices of a vertex \ensuremath{A}}
+	% children
+	\N{\CH(A)}{the child vertex or children vertices of a vertex \ensuremath{A}}
+	% neighbor
+	\N{\NE(A)}{the neighboring vertices of a vertex \ensuremath{A}}
+	% set of easy distributions
+	\N{\mathcal{Q}}{set of \textit{easy} distributions}
+	% kullback-leibler divergence
+	\N{ \KL{q(x)}{p(x)} }{the Kullback-Leibler divergence \textit{distance measure} as defined\\in Equation~(\ref{eq:kullback_leibler_div})}
+	% entropy
+	\N{ H(q) }{the entropy of a distribution \ensuremath{q} defined in Equation~(\ref{eq:entropy})}
+%
+	\vspace*{2pt}\hrule
+\end{itemize}\egroup

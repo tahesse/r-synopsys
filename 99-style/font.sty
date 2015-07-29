@@ -1,0 +1,24 @@
+\ProvidesPackage{./99-style/font}
+%
+% Documentation of current font:
+% ftp://ftp.fu-berlin.de/tex/CTAN/fonts/xcharter/doc/xcharter-doc.pdf
+%
+
+
+%---------%
+% OPTIONS %
+%---------%
+
+\@ifpackageloaded{fontenc}{}{\usepackage[T1]{fontenc}}
+\@ifpackageloaded{bookman}{}{\usepackage{bookman}}
+\@ifpackageloaded{charter}{}{\usepackage{charter}}
+\@ifpackageloaded{tgbonum}{}{\usepackage{tgbonum}}
+
+
+%------%
+% FONT %
+%------%
+
+\fontfamily{bch}\selectfont
+%\fontfamily{qbk}\selectfont
+\linespread{1.1}

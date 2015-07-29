@@ -1,0 +1,40 @@
+\ProvidesPackage{./99-style/symbols}
+
+
+%---------%
+% OPTIONS %
+%---------%
+
+% load packages if not done already
+\@ifpackageloaded{amsmath}{}{\RequirePackage{amsmath}}
+\@ifpackageloaded{amssymb}{}{\RequirePackage{amssymb}}
+\@ifpackageloaded{amsfonts}{}{\RequirePackage{amsfonts}}
+
+
+%---------%
+% SYMBOLS %
+%---------%
+
+% (un)conditional independence
+\newcommand{\CI}{\ensuremath{\mathrel{\perp\!\!\!\perp}}} % according to wikipeda
+
+% (un)conditional dependence
+\newcommand{\CD}{\ensuremath{\mathrel{\rotatebox[origin=c]{180}{\CI}}}}
+
+% parent relation
+\newcommand{\PA}{\ensuremath{\mathrm{pa}}}
+
+% child relation
+\newcommand{\CH}{\ensuremath{\mathrm{ch}}}
+
+% neighbor relation
+\newcommand{\NE}{\ensuremath{\mathrm{ne}}}
+
+% kullback-leiber divergence
+\newcommand*{\KL}[2]{ \ensuremath{ \mathrm{KL}\left( #1 \middle|\middle| #2 \right) } }
+
+% expectation
+\newcommand{\E}[2][]{\ensuremath{\mathbb{E}_{#1}\left[ #2 \right]}}
+
+% projection of distributions to the exponential family
+\newcommand{\PROJ}[1]{\ensuremath{\mathrm{proj}\left[ #1 \right]}}

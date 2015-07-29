@@ -1,0 +1,245 @@
+\chapter{Foundations of Machine Learning}
+%
+%
+%
+\section{Machine Learning Topics}
+%
+%
+%
+\begin{itemize}
+	\item\itab{Goal of Machine Learning}%
+		\dtab{Machines that \emph{learn} to perform a \emph{task} from \emph{experience}}
+		\begin{itemize}
+			\item \emph{Learning} means to adjust parameters $w$
+			\item A \emph{task} is the function $f$
+			\item \emph{Experience} is represented by a dataset $\mathcal{D} = \{x_1,\ldots,x_n\}$ or $\mathcal{D} = \{(x_1,y_1),\ldots,(x_n,y_n)\}$
+		\end{itemize}
+\end{itemize}
+We can formalize this issue as \begin{equation}
+	y = f(x;\mathbf{w})
+	\label{eq:goal_ml}
+\end{equation} where %
+\begin{itemize}
+	\item\itab{$y$}%
+		\tab{is an \textit{output variable}}
+	\item\itab{$x$}%
+		\tab{is an \textit{input variable}}
+	\item\itab{w}%
+		\tab{are the \textit{model parameters}}
+\end{itemize}
+Hence, \textbf{learning} a \textbf{task} is based on \textbf{data}; thus we adjust the parameters to obtain output variables that relate to the input variables. %
+%
+%
+%
+\subsection{Unsupervised Learning}
+In unsupervised learning, we deal with data of the form %
+\begin{equation}
+\mathcal{D} = \left\{ x_1,x_2, \ldots, x_N \right\}.
+\label{eq:unsupervised_train_set}
+\end{equation}
+\begin{itemize}
+	\item\itab{Given}\tab{Input data points $x$}
+	\item\itab{Goals}%
+	\begin{itemize}
+		\item\itab{Clustering}
+			\htab{find groups in the data}
+		\item\itab{Density estimation}
+			\htab{determine the data distribution $p(x)$}
+		\item\itab{Dimensionality reduction}
+			\htab{visualize the data by projections}
+	\end{itemize}
+\end{itemize}
+%
+%
+%
+\subsection{Supervised Learning}
+In supervised learning, we deal with data of the form %
+\begin{equation}
+\mathcal{D} = \left\{ (x_1,y_1),(x_2,y_2), \ldots, (x_N,y_N) \right\}.
+\label{eq:supervised_train_set}
+\end{equation}
+\begin{itemize}
+	\item\itab{Given}\tab{Pairs of input and output data points ($x,y$)}
+	\item\itab{Goals}%
+	\begin{itemize}
+		\item\itab{Generalization}\htab{Learn the relation between input and output and generalize to unseen data}
+	\end{itemize}
+\end{itemize}
+%
+%
+%
+\subsection{Reinforcement Learning}
+\begin{itemize}
+	\item\itab{Given}
+	\begin{itemize}
+		\item\itab{Exploration}%
+			\tab{try out new actions}
+		\item\itab{Exploitation}%
+			\tab{use known actions that yield a high reward}
+	\end{itemize}
+	\item\itab{Goals}%
+	\begin{itemize}
+		\item Find a good trade-off between \textbf{Exploration} and \textbf{Exploitation} to maximize the reward for all actions
+	\end{itemize}
+\end{itemize}
+%
+%
+%
+\subsection{Semi-supervised Learning}\label{ssec:SSL}
+We are given two datasets %
+\begin{equation}
+\mathcal{D}_l = \left\{(x_1,y_1),\ldots(x_k,y_k)\right\}
+\label{eq:SSL_train_set}
+\end{equation}
+for learning and %
+\begin{equation}
+\mathcal{D}_t = \left\{x_k,\ldots,x_{k+n}\right\}
+\label{eq:SSL_test_set}
+\end{equation}
+for testing. %
+Again, we seek the solution given by Equation~(\ref{eq:goal_ml}). %
+How can we use the extra information of $\mathcal{D}_t$ for this purpose? %
+We shall use the test set to evaluate our model. %
+%
+%
+%
+\subsection{Transductive Learning}
+Transductive learning is similar to semi-supervised learning of Section~(\ref{ssec:SSL}). %
+In contrast to semi-supervised learning, we do not try to learn a function $f$~(according to Equation~(\ref{eq:goal_ml})) explicitly but rather try to get predicitions for the test data set given by Equation~(\ref{eq:SSL_test_set}). %
+Moreover, the test data set can be used for training. %
+%
+%
+%
+\subsection{On-line Learning}
+The training data is presented step-by-step; hence we are given a new datapoint of the form $x_t$ or $(x_t,y_t)$ at each new time step $t$. %
+In this scenario, we have limited storage and need to learn in epochs where we only use a limited set of training data points (mostly those datapoints that help to achieve a certain goal). %
+%
+%
+%
+\subsection{Large-scale Learning}
+There is no definition for the term large-scale but it refers to \textit{huge} amounts of data which is mostly used by fast or parallelized learning algorithms. %
+%
+%
+%
+\subsection{Active Learning}
+We have a data set similar to the one in Equation~(\ref{eq:unsupervised_train_set}) and our goal is to learn $y$ as in Equation~(\ref{eq:goal_ml}). %
+We suppose that labeling a data point $x_i$, i.e. predict $y_i$, costs something. %
+The goal is to keep the cost as low as possible. %
+%
+%
+%
+\subsection{Structured Output Learning}
+For structured output learning, we try to learn a function %
+\begin{equation}
+f(x,y;\mathbf{w})
+\label{eq:goal_structured_output_learning}
+\end{equation}%
+which we can use to predict a certain outcome %
+\begin{equation}
+y = \underset{\bar{y}}{\arg\max} \left\{ f(x,\bar{y};\mathbf{w}) \right\}.
+\end{equation}
+For the purpose to obtain an optimal $y$ we are given a data set as of the form in Equation~(\ref{eq:supervised_train_set}). %
+The wording structure in this context relates to e.g. graphical models, trees, etc.. %
+%
+%
+%
+\section{Decision Theory -- Inference and decision}
+\begin{minipage}{1\textwidth}
+	\vspace*{5pt}
+	\begin{minipage}[t]{.48\textwidth}
+		\vspace*{5pt}
+		\centerline{\Large{}Inference}
+		\vspace*{5pt}
+		\begin{itemize}
+			\item obtain probabilities $p(C_k|x)$
+		\end{itemize}
+		~\\%
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}[t]{.48\textwidth}
+		\vspace*{5pt}
+		\centerline{\Large{}Decision}
+		\vspace*{5pt}
+		\begin{itemize}
+			\item obtain optimal class assignment $C^*$
+		\end{itemize}
+		~\\%
+	\end{minipage}
+\end{minipage}
+%
+%
+%
+\clearpage
+\subsection{Solving decision problems}
+There are three approaches commonly known to tackle decision problems: %
+\\[.5cm]%
+\begin{minipage}{1\textwidth}
+	\begin{minipage}[t]{.32\textwidth}
+		\centerline{\Large{}Generative models}
+		\vspace*{5pt}
+		\begin{itemize}
+			\item Infer the class conditionals $p(x|C_k),~k=1,\ldots,K$
+		\end{itemize}
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}[t]{.32\textwidth}
+		\centerline{\Large{}Discriminative models}
+		\vspace*{5pt}
+		\begin{itemize}
+			\item Infer posterior probabilities $p(C_k|x)$ directly
+		\end{itemize}
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}[t]{.32\textwidth}
+		\centerline{\Large{}Discriminative function}
+		\vspace*{5pt}
+		\begin{itemize}
+			\item Find $f:\mathcal{X}\rightarrow\{1,\ldots,K\}$ by\\minimizing $\mathbb{E}\left[\Delta\right]$ directly\\where $\Delta$ is a given loss function\\
+		\end{itemize}
+	\end{minipage}
+\end{minipage}
+\hrule height 1pt%
+~\\%
+\begin{minipage}{1\textwidth}
+	\begin{minipage}[t]{.32\textwidth}
+		\vspace*{5pt}
+%
+		\begin{itemize}
+			\item[\color{Green}\textbf{+}] We can generate samples from the learned distribution
+			\item[\color{Green}\textbf{+}] We are able obtain the marginal probability $p(x) = \sum_k p(x|C_k)$
+			\item[\color{Red}\textbf{--}] Need for lot of data for high dimensions of $x$ to determine class conditionals
+			\item[\color{Red}\textbf{--}] We might not be interested in all quantities and this seems to be too much
+		\end{itemize}
+		\vspace*{5pt}
+%
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}[t]{.32\textwidth}
+		\vspace*{5pt}
+		%
+		\begin{itemize}
+			\item[\color{Green}\textbf{+}] No need to model the class\\conditionals $p(x|C_k)$
+			\item[]~\\
+			\item[\color{Red}\textbf{--}] No access to model $p(x)$
+			\item[]~\\
+		\end{itemize}
+		\vspace*{5pt}
+		%
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}[t]{.32\textwidth}
+		\vspace*{5pt}
+		%
+		\begin{itemize}
+			\item[\color{Green}\textbf{+}] Models the quantitiy of interest directly
+			\item[\color{Green}\textbf{+}] Not bound to probabilities and hence no need to normalize
+			\item[\color{Red}\textbf{--}] Need for a loss function $\Delta$ while learning and changes to the loss function $\Delta$ requires re-learning
+			\item[\color{Red}\textbf{--}] No probabilities mean no uncertainty and no reject option
+		\end{itemize}
+		\vspace*{5pt}
+		%
+	\end{minipage}
+\end{minipage}
+%
+%
+%

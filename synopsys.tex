@@ -1,0 +1,193 @@
+%% synopsys.tex
+%% Copyright 2015 Thomas A. Hesse
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Thomas A. Hesse.
+%
+% This work consists of the files synopsys.tex and included files.
+%
+%--------------------%
+\documentclass[%
+	english,%
+	8pt%
+]{extreport}
+%--------------------%
+\usepackage[%
+	a4paper,%
+	total={210mm,297mm},%
+	left=20mm,%
+	right=20mm,%
+	top=20mm,%
+	bottom=20mm%
+]{geometry}
+%--------------------%
+\usepackage[%
+	english%
+]{babel}
+%--------------------%
+\usepackage[%
+	utf8%
+]{inputenc}
+%--------------------%
+\usepackage[%
+	hyperref,%
+	dvipsnames,%
+	table%
+]{xcolor}
+%--------------------%
+\usepackage[%
+	linkcolor=RoyalBlue,%
+	colorlinks=true%
+]{hyperref}
+%--------------------%
+\usepackage{float}
+%--------------------%
+\usepackage{enumitem}
+%--------------------%
+\usepackage{graphicx}
+%--------------------%
+\usepackage{caption}
+%--------------------%
+\usepackage{array}
+%--------------------%
+\usepackage[toc]{multitoc}
+%--------------------%
+\usepackage{todonotes}
+%--------------------%
+%
+% TITLE %
+\title{\parbox[t]{.9\textwidth}{\centering{Compendia in Math, Statistics, {Machine~Learning}, Robotics and {Robot~Learning}}}}
+%--------------------%
+%
+% AUTHORS %
+\author{%
+	Hesse, Thomas\\\texttt{mail@thomas-hesse.eu}%
+	\\[5ex]%
+	Faber, Natalie\\\texttt{mail@e-mail.mail}}%
+%--------------------%
+%
+% SETUP DIRECTORIES %
+% :top level:
+\newcommand{\rootdir}{.}
+% :1st level:
+\newcommand{\mldir} {\rootdir/10-machinelearning}
+\newcommand{\rldir} {\rootdir/15-robotlearning}
+\newcommand{\rdir}  {\rootdir/20-robotics}
+\newcommand{\gldir} {\rootdir/50-glossary}
+\newcommand{\stydir}{\rootdir/99-style}
+\newcommand{\media} {\rootdir/media}
+% :2nd level:
+\newcommand{\mlmedia}{\mldir/\media}
+%--------------------%
+%
+% CUSTOM STY %
+\usepackage{\stydir/font}
+\usepackage{\stydir/customcolors}
+\usepackage{\stydir/customcmds}
+\usepackage{\stydir/symbols}
+\usepackage{\stydir/customcolumns}
+\usepackage{\stydir/titlepage}
+\usepackage{\stydir/pagestyle}
+%--------------------%
+%
+% INCLUDE LIST %
+\includeonly{%
+	\mldir/01_foundations,%
+	\mldir/02_graphical_models%
+	}%
+%--------------------%
+%
+% DOCUMENT %
+\begin{document}
+\customtitle\tableofcontents\clearpage
+%
+%
+% TODO move this into its own file
+\bgroup
+\newcounter{notationctr}
+\renewcommand*{\arraystretch}{1.5}
+\renewcommand{\itab}[1]{\hspace{0em}\rlap{\parbox[t]{.24\textwidth}{\textbf{#1}}}}
+\newcommand{\N}[2]{%
+	\ifodd\value{notationctr}%
+		\item[]\colorbox{whitegrayish}{%
+			\parbox{.85\textwidth}{%
+				\itab{\ensuremath{#1}}\htab{#2}%
+			}%
+		}%
+	\else%
+		\item[]\colorbox{white}{%
+			\parbox{.85\textwidth}{%
+				\itab{\ensuremath{#1}}\htab{#2}%
+			}%
+		}%
+	\fi%
+	\stepcounter{notationctr}%
+}
+\chapter{Notation}
+Scalars, vectors and matrices are mostly written in greek letters, bold font lowercase roman letters and bold font uppercase roman letters respectively. %
+\begin{itemize}
+	\item[]\itab{~Symbols}\htab{\textbf{~Description}}
+	\vspace*{2pt}\hrule
+%
+	% random variables
+	\N{X,~Y,~Z}{random variables}%
+	% expectation
+	\N{\E{X}}{expectation of the random variable \ensuremath{X}}%
+	% discrete outcome of random variables
+	\N{\mathcal{X},~\mathcal{Y},~\mathcal{Z}}{sets of discrete outcomes of a random variable}
+	% common output variable
+	\N{y}{commonly used as output variable}
+	% common input variable
+	\N{x}{commonly used as input variable}
+	% common model parameters
+	\N{\mathbf{w}}{commonly used as model parameters}
+	% common function or task
+	\N{f}{commonly used as a function or task}
+	% probability density
+	\N{p(x)}{probability density of the variable \ensuremath{x}}
+	% conditional independence
+	\N{\mathcal{X} \CI \mathcal{Y} \mid \mathcal{Z}}{conditional independence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}} given set \ensuremath{\mathcal{Z}}}
+	% unconditional independence
+	\N{\mathcal{X} \CI \mathcal{Y} \\ \mathcal{X} \CI \mathcal{Y}\mid\emptyset}{(unconditional) independence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}}}
+	% conditional dependence
+	\N{\mathcal{X} \CD \mathcal{Y} \mid \mathcal{Z}}{conditional dependence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}} given set \ensuremath{\mathcal{Z}}}
+	% unconditional dependence
+	\N{\mathcal{X} \CD \mathcal{Y} \\ \mathcal{X} \CD \mathcal{Y}\mid\emptyset}{(unconditional) dependence of the sets \ensuremath{\mathcal{X}} and \ensuremath{\mathcal{Y}}}
+	% parent
+	\N{\PA(A)}{the parent vertex or vertices of a vertex \ensuremath{A}}
+	% children
+	\N{\CH(A)}{the child vertex or children vertices of a vertex \ensuremath{A}}
+	% neighbor
+	\N{\NE(A)}{the neighboring vertices of a vertex \ensuremath{A}}
+	% set of easy distributions
+	\N{\mathcal{Q}}{set of \textit{easy} distributions}
+	% kullback-leibler divergence
+	\N{ \KL{q(x)}{p(x)} }{the Kullback-Leibler divergence \textit{distance measure} as defined\\in Equation~(\ref{eq:kullback_leibler_div})}
+	% entropy
+	\N{ H(q) }{the entropy of a distribution \ensuremath{q} defined in Equation~(\ref{eq:entropy})}
+%
+	\vspace*{2pt}\hrule
+\end{itemize}
+\egroup
+\clearpage
+%
+%
+%
+\include{\mldir/01_foundations}
+\include{\mldir/02_graphical_models}
+%
+%
+%
+\end{document}
+%
+%
+%

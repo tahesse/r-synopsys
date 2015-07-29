@@ -1,0 +1,19 @@
+\ProvidesPackage{./99-style/customcolumns}
+
+
+%---------%
+% OPTIONS %
+%---------%
+
+% load packages if not done already
+\@ifpackageloaded{array}{}{\usepackage{array}}
+
+
+%----------------%
+% CUSTOM COLUMNS %
+%----------------%
+
+\newcolumntype{F}[1]{>{\vbox to 20pt\bgroup\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}<{\egroup}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

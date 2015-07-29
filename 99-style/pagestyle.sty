@@ -1,0 +1,26 @@
+\ProvidesPackage{./99-style/pagestyle}
+
+
+%---------%
+% OPTIONS %
+%---------%
+
+\@ifpackageloaded{fancyhdr}{}{\usepackage{fancyhdr}}
+\@ifpackageloaded{titleref}{}{\usepackage{titleref}}
+
+\makeatletter
+\newcommand*{\currentname}{\TR@currentTitle}
+\makeatother
+
+
+%-------------------%
+% CUSTOM PAGE STYLE %
+%-------------------%
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CE,CO]{\textsc{\chaptername~\thechapter.~\currentname}}
+\fancyfoot[CE,CO]{\thepage}
+
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}

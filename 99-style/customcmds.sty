@@ -1,0 +1,51 @@
+\ProvidesPackage{./99-style/customcmds}
+
+
+%---------%
+% OPTIONS %
+%---------%
+
+% load packages if not done already
+\@ifpackageloaded{fontenc}{}{\usepackage[T1]{fontenc}}
+\@ifpackageloaded{titlesec}{}{\usepackage{titlesec}}
+\@ifpackageloaded{xcolor}{}{\usepackage{xcolor}}
+\@ifpackageloaded{graphicx}{}{\usepackage{graphicx}}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\@ifpackageloaded{enumitem}{}{\usepackage{enumitem}}
+
+
+%-----------------%
+% CUSTOM COMMANDS %
+%-----------------%
+
+% titleformat
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hspace{20pt}\textcolor{\accentcolor}{|}\hspace{20pt}}{0pt}{\Huge\bfseries}
+
+% notation
+\let\OLDvec\vec\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{#1}}} % vector notation
+\newcommand{\mat}[1]{\ensuremath{\boldsymbol{#1}}} % matrix notation
+
+% new commands
+\newcommand{\itab}[1]{\hspace{0em}\rlap{\textbf{#1}}}
+\newcommand{\tab}[1]{\hspace{.18\textwidth}\rlap{\parbox[t]{.74\textwidth}{#1}}}
+\newcommand{\htab}[1]{\hspace{.27\textwidth}\rlap{\parbox[t]{.65\textwidth}{#1}}}
+\newcommand{\dtab}[1]{\hspace{.36\textwidth}\rlap{\parbox[t]{.56\textwidth}{#1}}}
+\newcommand{\fixcfigure}[3][!]{%
+	\bgroup\catcode`_=12% automatically escape underscores
+	\begin{figure}[H]\centering\resizebox{#2\textwidth}{#1}{\includegraphics[scale=1]{#3}}\end{figure}%
+	\egroup}%
+
+
+% renew commands
+\renewcommand*{\arraystretch}{1.5}
+\renewcommand{\labelitemi}{$\circ$}
+\renewcommand{\labelitemii}{$\circ$}
+\let\OLDemph\emph\renewcommand{\emph}[1]{\textcolor{\accentcolor}{{\fontfamily{qbk}\selectfont#1}}} % emphasize
+\let\OLDpara\paragraph\renewcommand{\paragraph}[1]{\textcolor{\accentcolor}{\OLDpara{#1}}\noindent} % soft paragraph
+
+% environments
+\newsavebox{\topicbox}
+\newcommand{\topicBotPadd}{0}
+\newenvironment{topic}[2]%
+	{\renewcommand*{\topicBotPadd}{#1}\paragraph{#2}\begin{lrbox}{\topicbox}\begin{minipage}{.98\textwidth}\bgroup}%
+	{\egroup\end{minipage}\end{lrbox}\fbox{\usebox{\topicbox}}\par\vspace{\topicBotPadd}}%

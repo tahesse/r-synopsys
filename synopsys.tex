@@ -79,13 +79,15 @@
 % :top level:
 \newcommand{\rootdir}{.}
 % :1st level:
+\newcommand{\mdir}  {\rootdir/00-math}
 \newcommand{\mldir} {\rootdir/10-machinelearning}
-\newcommand{\rldir} {\rootdir/15-robotlearning}
-\newcommand{\rdir}  {\rootdir/20-robotics}
+\newcommand{\rldir} {\rootdir/15-robotics}
+\newcommand{\rdir}  {\rootdir/20-robotlearning}
 \newcommand{\gldir} {\rootdir/50-glossary}
 \newcommand{\stydir}{\rootdir/99-style}
 \newcommand{\media} {\rootdir/media}
 % :2nd level:
+\newcommand{\mmedia}{\mdir/\media}
 \newcommand{\mlmedia}{\mldir/\media}
 %--------------------%
 %
@@ -103,8 +105,14 @@
 % INCLUDE LIST %
 \includeonly{%
 	\gldir/glossary,%
-	\mldir/01_foundations,%
-	\mldir/02_graphical_models%
+%
+	\mdir/00-foundations,%
+	\mdir/05-sets,%
+	\mdir/06-relations,%
+	\mdir/10-functions,%
+%
+	\mldir/00-foundations,%
+	\mldir/30-graphical_models%
 	}%
 %--------------------%
 %
@@ -112,8 +120,17 @@
 \begin{document}
 \customtitle\tableofcontents
 %
+% Glossary
 \include{\gldir/glossary}
-\include{\mldir/01_foundations}
-\include{\mldir/02_graphical_models}
+%
+% Math
+\include{\mdir/00-foundations}
+\include{\mdir/05-sets}
+\include{\mdir/06-relations}
+\include{\mdir/10-functions}
+%
+% Machine Learning
+\include{\mldir/00-foundations}
+\include{\mldir/30-graphical_models}
 %
 \end{document}

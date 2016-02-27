@@ -15,12 +15,11 @@
 %
 % This work consists of the files synopsys.tex and included files.
 %
-%--------------------%
+%%================================================================================================%%
 \documentclass[%
 	english,%
 	8pt%
 ]{extreport}
-%--------------------%
 \usepackage[%
 	a4paper,%
 	total={210mm,297mm},%
@@ -29,51 +28,39 @@
 	top=20mm,%
 	bottom=20mm%
 ]{geometry}
-%--------------------%
 \usepackage[%
 	english%
 ]{babel}
-%--------------------%
 \usepackage[%
 	utf8%
 ]{inputenc}
-%--------------------%
 \usepackage[%
 	hyperref,%
 	dvipsnames,%
 	table%
 ]{xcolor}
-%--------------------%
 \usepackage[%
 	linkcolor=RoyalBlue,%
 	colorlinks=true%
 ]{hyperref}
-%--------------------%
+%%================================================================================================%%
 \usepackage{float}
-%--------------------%
 \usepackage{enumitem}
-%--------------------%
 \usepackage{graphicx}
-%--------------------%
 \usepackage{caption}
-%--------------------%
 \usepackage{array}
-%--------------------%
 \usepackage[toc]{multitoc}
-%--------------------%
 \usepackage{todonotes}
-%--------------------%
-%
+%%================================================================================================%%
 % TITLE %
 \title{\parbox[t]{.9\textwidth}{\centering{Compendia in Math, Statistics, {Machine~Learning}, Robotics and {Robot~Learning}}}}
-%--------------------%
-%
+%%================================================================================================%%
 % AUTHORS %
 \author{%
 	Hesse, Thomas\\\texttt{mail@thomas-hesse.eu}%
 	\\[5ex]%
 	Faber, Natalie\\\texttt{mail@nf9.me}}%
-%--------------------%
+%%================================================================================================%%
 %
 % SETUP DIRECTORIES %
 % :top level:
@@ -89,7 +76,7 @@
 % :2nd level:
 \newcommand{\mmedia}{\mdir/\media}
 \newcommand{\mlmedia}{\mldir/\media}
-%--------------------%
+%%================================================================================================%%
 %
 % CUSTOM STY %
 \usepackage{\stydir/font}
@@ -100,21 +87,25 @@
 \usepackage{\stydir/titlepage}
 \usepackage{\stydir/pagestyle}
 \usepackage{\stydir/glossary}
-%--------------------%
-%
+\usepackage{\stydir/epigraphs}
+%%================================================================================================%%
 % INCLUDE LIST %
 \includeonly{%
-	\gldir/glossary,%
+   \gldir/glossary,%
 %
-	\mdir/00-foundations,%
-	\mdir/05-sets,%
-	\mdir/06-relations,%
-	\mdir/10-functions,%
+   \mdir/00-foundations,%
+   \mdir/05-sets,%
+   \mdir/06-relations,%
+   \mdir/10-functions,%
 %
-	\mldir/00-foundations,%
-	\mldir/30-graphical_models%
-	}%
-%--------------------%
+   \mldir/00-foundations,%
+   \mldir/01-linear_regression,%
+   \mldir/02-logistic-regression,%
+   \mldir/03-regularization,%
+   \mldir/04-neural_networks,%
+   \mldir/30-graphical_models%
+}%
+%%================================================================================================%%
 %
 % DOCUMENT %
 \begin{document}
@@ -124,13 +115,20 @@
 \include{\gldir/glossary}
 %
 % Math
-\include{\mdir/00-foundations}
-\include{\mdir/05-sets}
-\include{\mdir/06-relations}
-\include{\mdir/10-functions}
+%\include{\mdir/00-foundations}
+%\include{\mdir/05-sets}
+%\include{\mdir/06-relations}
+%\include{\mdir/10-functions}
 %
 % Machine Learning
+\bgroup\let\clearpage\relax
+\chapter{Machine Learning}
 \include{\mldir/00-foundations}
+\egroup
+\include{\mldir/01-linear_regression}
+\include{\mldir/02-logistic-regression}
+\include{\mldir/03-regularization}
+\include{\mldir/04-neural_networks}
 \include{\mldir/30-graphical_models}
 %
 \end{document}

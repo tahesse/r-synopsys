@@ -1,42 +1,47 @@
-\chapter{Foundations of Machine Learning}
+%%
+\section{Foundations of Machine Learning}
 %
-%
-%
-\section{Machine Learning Topics}
-%
-%
-%
-\begin{itemize}
-	\item\itab{Goal of Machine Learning}%
-		\dtab{Machines that \emph{learn} to perform a \emph{task} from \emph{experience}}
-		\begin{itemize}
-			\item \emph{Learning} means to adjust parameters $w$
-			\item A \emph{task} is the function $f$
-			\item \emph{Experience} is represented by a dataset $\mathcal{D} = \{x_1,\ldots,x_n\}$ or $\mathcal{D} = \{(x_1,y_1),\ldots,(x_n,y_n)\}$
-		\end{itemize}
-\end{itemize}
-We can formalize this issue as \begin{equation}
-	y = f(x;\mathbf{w})
-	\label{eq:goal_ml}
-\end{equation} where %
-\begin{itemize}
-	\item\itab{$y$}%
-		\tab{is an \textit{output variable}}
-	\item\itab{$x$}%
-		\tab{is an \textit{input variable}}
-	\item\itab{w}%
-		\tab{are the \textit{model parameters}}
-\end{itemize}
-Hence, \textbf{learning} a \textbf{task} is based on \textbf{data}; thus we adjust the parameters to obtain output variables that relate to the input variables. %
-%
-%
-%
-\subsection{Unsupervised Learning}
-In unsupervised learning, we deal with data of the form %
+Machine Learning is a research field that emerged from the field of \emph{artificial intelligence}. %The aim of Machine Learning is defined to \textit{give a computer the ability to learn without being explicitly programmed}. %
+There are two general definitions of machine learning from Arthur Samuel and Tom Mitchell available: %
+%%================================================================================================%%
+\leavevmode\\[1ex]
+\begin{quote}
+   ``Field of study that gives computers the ability to learn without being explicitly programmed.''\newline%
+   \raggedleft--- \textup{Arthur Samuel}, 1959
+\end{quote}
+\leavevmode\\[.25ex]
+\begin{quote}
+   ``A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.''\newline%
+   \raggedleft--- \textup{Tom Mitchell}, 1997
+\end{quote}
+\leavevmode\\[1ex]
+%%================================================================================================%%
+The latter definition is more often cited and a more formal and modern definition. %
+Here we constrain ourselves to the definition that a machine \emph{learns} to perform a \emph{task} from \emph{experience}. %
+More formally, learning means to adjust or to tune parameter values (often called $\theta$ or $w$), a task is considered to be a function $f$, and experience is represented by data (generally we use $\mathcal{D}$ to be our dataset because the actual form of the data set depends on the issue we are dealing with). %
+Using the just introduced terminology, we grasp learning problems in the following mathematical manner %
 \begin{equation}
-\mathcal{D} = \left\{ x_1,x_2, \ldots, x_N \right\}.
-\label{eq:unsupervised_train_set}
-\end{equation}
+   y = f(x;\mathbf{w})
+   \label{eq:machine_learning}
+\end{equation} where $y$ is called \textit{output variable}, $x$ is called \textit{input variable}, and $\mathbf{w}$ are the \textit{model parameters}. %
+Equation \ref{eq:machine_learning} shows the special case of \emph{supervised learning}. %
+%Hence, \textbf{learning} a \textbf{task} is based on \textbf{data}; thus we adjust the parameters to obtain output variables that relate to the input variables. %
+%%================================================================================================%%
+\subsection{Supervised Learning}
+In supervised learning, we deal with data of the form $\mathcal{D} = \left\{ (x_1,y_1),(x_2,y_2), \ldots, (x_N,y_N) \right\}$. %
+Reconsider Equation \ref{eq:machine_learning}; we try to find a continuous function $f$ that maps any input to an output. %
+Hence, the aim of supervised learning is to find a model that is sufficiently precise enough to fit the data $\mathcal{D}$ during training and \emph{generalize well} to new unseen data. %
+\\[2ex]%
+\textbf{Example:} More common, we are presented some input data $x$ and its related outcome $y$. %
+Assume that a teacher shows you multiple pictures of cars such as a red Ferraris, black Porsches, blue BMWs, and so on. %
+In this case, our input data (or features) might be the color of the cars and the related outcome is the car name (e.g. Ferrari, Porsche, BMW, etc.). %
+In the beginning of your supervised learning task, your teacher shows the pictures of the cars to you and let you know about the outcomes $y$. %
+After a while, you should have learned a function $f$ that maps new unseen colored cars to their type. %
+%%================================================================================================%%
+\subsection{Unsupervised Learning}
+In unsupervised learning, we deal with data of the form $\mathcal{D} = \left\{ x_1,x_2, \ldots, x_N \right\}$. %
+Given only input data or features $x$; we try to find patterns in the data. %
+
 \begin{itemize}
 	\item\itab{Given}\tab{Input data points $x$}
 	\item\itab{Goals}%
@@ -49,42 +54,7 @@ In unsupervised learning, we deal with data of the form %
 			\htab{visualize the data by projections}
 	\end{itemize}
 \end{itemize}
-%
-%
-%
-\subsection{Supervised Learning}
-In supervised learning, we deal with data of the form %
-\begin{equation}
-\mathcal{D} = \left\{ (x_1,y_1),(x_2,y_2), \ldots, (x_N,y_N) \right\}.
-\label{eq:supervised_train_set}
-\end{equation}
-\begin{itemize}
-	\item\itab{Given}\tab{Pairs of input and output data points ($x,y$)}
-	\item\itab{Goals}%
-	\begin{itemize}
-		\item\itab{Generalization}\htab{Learn the relation between input and output and generalize to unseen data}
-	\end{itemize}
-\end{itemize}
-%
-%
-%
-\subsection{Reinforcement Learning}
-\begin{itemize}
-	\item\itab{Given}
-	\begin{itemize}
-		\item\itab{Exploration}%
-			\tab{try out new actions}
-		\item\itab{Exploitation}%
-			\tab{use known actions that yield a high reward}
-	\end{itemize}
-	\item\itab{Goals}%
-	\begin{itemize}
-		\item Find a good trade-off between \textbf{Exploration} and \textbf{Exploitation} to maximize the reward for all actions
-	\end{itemize}
-\end{itemize}
-%
-%
-%
+%%================================================================================================%%
 \subsection{Semi-supervised Learning}\label{ssec:SSL}
 We are given two datasets %
 \begin{equation}
@@ -100,6 +70,21 @@ for testing. %
 Again, we seek the solution given by Equation~(\ref{eq:goal_ml}). %
 How can we use the extra information of $\mathcal{D}_t$ for this purpose? %
 We shall use the test set to evaluate our model. %
+%%================================================================================================%%
+\subsection{Reinforcement Learning}
+\begin{itemize}
+	\item\itab{Given}
+	\begin{itemize}
+		\item\itab{Exploration}%
+			\tab{try out new actions}
+		\item\itab{Exploitation}%
+			\tab{use known actions that yield a high reward}
+	\end{itemize}
+	\item\itab{Goals}%
+	\begin{itemize}
+		\item Find a good trade-off between \textbf{Exploration} and \textbf{Exploitation} to maximize the reward for all actions
+	\end{itemize}
+\end{itemize}
 %
 %
 %

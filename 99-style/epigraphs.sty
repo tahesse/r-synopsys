@@ -1,0 +1,21 @@
+% epigraphs.sty
+% 
+% (c) Thomas Hesse
+%
+%% This program can be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License Distributed from CTAN archives
+%% in directory macros/latex/base/lppl.txt.
+% 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{epigraphs}[2015/09/16 v1.0 LaTeX package for epigraph options]
+
+\@ifpackageloaded{epigraph}{}{\RequirePackage{epigraph}}
+
+%% epigraph options
+\epigraphsize{\small\itshape}
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+
+\endinput
+%%
+%% End of file `epigraphs.sty'.

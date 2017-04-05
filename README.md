@@ -1,2 +1,2 @@
-# r-ml-synopsys
-Synopsys of machine learning, robot learning and robotics
+# r-synopsys
+Synopsys of machine learning, robot learning and robotics (at some point...)
